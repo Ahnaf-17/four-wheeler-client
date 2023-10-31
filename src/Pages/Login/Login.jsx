@@ -17,16 +17,16 @@ const Login = () => {
         .then(result =>{
             const loggedInUser =result.user;
             console.log(loggedInUser)
-            const user = {email}
+            // const user = {email}
             
             // get access token 
-            axios.post('http://localhost:5000/jwt', user, {withCredentials:true})
-            .then(res => {
-                console.log(res.data)
-                if(res.data.success){
-                    navigate(location?.state?location?.state : '/')
-                }
-            })
+            // axios.post('http://localhost:5000/jwt', user, {withCredentials:true})
+            // .then(res => {
+            //     console.log(res.data)
+            //     if(res.data.success){
+            //         navigate(location?.state?location?.state : '/')
+            //     }
+            // })
 
         })
         .catch(error => console.error(error))
