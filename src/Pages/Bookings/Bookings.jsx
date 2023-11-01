@@ -55,7 +55,7 @@ const Bookings = () => {
             setBookings(res.data)
         })
 
-        // fetch(url)
+        // fetch(url) // credentials: 'include'
         //     .then(res => res.json())
         //     .then(data => setBookings(data))
     }, [])

@@ -1,12 +1,13 @@
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import loginImg from '../../assets/images/login/login.svg'
-import { useContext } from 'react';
-import { AuthContext } from '../../Provider/AuthProvider';
-import axios from 'axios';
+// import { useContext } from 'react';
+// import { AuthContext } from '../../Provider/AuthProvider';
+import useAuth from '../../Hooks/useAuth';
 const Login = () => {
-    const {SignIn} = useContext(AuthContext)
-    const navigate = useNavigate()
-    const location = useLocation()
+    // const {SignIn} = useContext(AuthContext)
+    const {SignIn} = useAuth()
+    // const navigate = useNavigate()
+    // const location = useLocation()
     const handleLogin = e => {
         e.preventDefault()
         const form = e.target
