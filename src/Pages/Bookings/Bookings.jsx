@@ -1,12 +1,15 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import BookingRow from "./BookingRow";
-import axios from "axios";
+// import axios from "axios";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const Bookings = () => {
     const { user } = useContext(AuthContext)
     const [bookings, setBookings] = useState([])
-    const url = `http://localhost:5000/bookings?email=${user?.email}`
+    const axiosSecure = useAxiosSecure()
+    // const url = `http://localhost:5000/bookings?email=${user?.email}`
+    const url = `/bookings?email=${user?.email}`
 
 
     const handleDelete = id => {
@@ -50,15 +53,17 @@ const Bookings = () => {
     }
 
     useEffect(() => {
-        axios.get(url, {withCredentials:true })
-        .then(res =>{
-            setBookings(res.data)
-        })
+        axiosSecure.get(url)
+        .then(res => setBookings(res.data))
+        // axios.get(url, {withCredentials:true })
+        // .then(res =>{
+        //     setBookings(res.data)
+        // })
 
         // fetch(url) // credentials: 'include'
         //     .then(res => res.json())
         //     .then(data => setBookings(data))
-    }, [])
+    }, [axiosSecure, url])
     return (
         <div>
             <div className="overflow-x-auto">
